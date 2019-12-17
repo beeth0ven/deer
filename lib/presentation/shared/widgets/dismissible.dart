@@ -15,7 +15,7 @@ Widget buildDismissibleBackground({
 
   return Container(
     child: Text(
-      'Done',
+      '完成',
       style: TextStyle().copyWith(color: AppColors.white1, fontSize: 20.0),
     ),
     padding: const EdgeInsets.symmetric(horizontal: 20.0),

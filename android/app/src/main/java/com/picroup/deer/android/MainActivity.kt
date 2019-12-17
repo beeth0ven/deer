@@ -1,10 +1,9 @@
-package me.wozappz.deer;
+package com.picroup.deer.android;
 
 import android.os.Bundle
 
 import io.flutter.app.FlutterActivity
 import io.flutter.plugins.GeneratedPluginRegistrant
-import android.app.Activity
 import android.graphics.Color
 import android.os.Build
 import android.view.View

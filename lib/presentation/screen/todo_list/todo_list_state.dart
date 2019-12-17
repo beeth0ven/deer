@@ -17,7 +17,7 @@ abstract class TodoListState implements Built<TodoListState, TodoListStateBuilde
   factory TodoListState({
     BuiltList<TodoEntity> todos,
     bool todoNameHasError = false,
-    String filter = 'All',
+    String filter = '所有',
     Task diskAccessTask = const Task.idle(),
   }) =>
       _$TodoListState._(

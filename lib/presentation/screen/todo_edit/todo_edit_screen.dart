@@ -59,6 +59,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
     final tomorrow = DateTime(now.year, now.month, now.day).add(Duration(days: 1));
 
     final date = await showDatePicker(
+      // locale: const Locale('zh'),
       context: context,
       initialDate: state.todo.dueDate ?? tomorrow,
       firstDate: DateTime(1970),
@@ -73,6 +74,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
 
   void _setupNotification(TodoEditState state) async {
     final date = await showDatePicker(
+      // locale: const Locale('zh'),
       context: context,
       initialDate: state.todo.notificationDate ?? DateTime.now(),
       firstDate: DateTime(1970),
@@ -103,14 +105,14 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
     final ImageSource source = await showDialog<ImageSource>(
       context: context,
       builder: (context) => RoundedAlertDialog(
-            title: 'Choose the image source',
+            title: '选择图像来源',
             actions: <Widget>[
               FlatRoundButton(
-                text: 'Gallery',
+                text: '相册',
                 onTap: () => Navigator.pop(context, ImageSource.gallery),
               ),
               FlatRoundButton(
-                text: 'Camera',
+                text: '相机',
                 onTap: () => Navigator.pop(context, ImageSource.camera),
               ),
             ],
@@ -145,15 +147,15 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
     showDialog(
       context: context,
       builder: (context) => RoundedAlertDialog(
-            title: 'Do you want to remove this image?',
+            title: '您要删除此图片吗？',
             actions: <Widget>[
               FlatRoundButton(
-                  text: 'Remove',
+                  text: '删除',
                   onTap: () {
                     _bloc.actions.add(SetImage(image: null));
                     Navigator.pop(context);
                   }),
-              FlatRoundButton(text: 'Cancel', onTap: () => Navigator.pop(context)),
+              FlatRoundButton(text: '取消', onTap: () => Navigator.pop(context)),
             ],
           ),
     );
@@ -205,7 +207,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
         appBar: AppBar(
           iconTheme: IconThemeData(color: ColorfulApp.of(context).colors.bleak),
           centerTitle: true,
-          title: Text('Edit Todo'),
+          title: Text('编辑待办事项'),
         ),
         body: _buildBody(state),
       ),
@@ -229,7 +231,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
           ),
         ),
         BottomButton(
-          text: 'Save',
+          text: '保存',
           onPressed: () => _submit(state),
         ),
       ],
@@ -250,7 +252,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
           maxLengthEnforced: true,
           maxLines: null,
           fontSize: 20.0,
-          hint: state.todoNameHasError ? 'Name can\'t be empty' : 'Todo\'s name',
+          hint: state.todoNameHasError ? '名称不能为空' : '待办事项的名称',
           onChanged: (value) => _bloc.actions.add(UpdateField(key: FieldKey.name, value: value)),
         ),
       ),
@@ -263,7 +265,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Text(
-            'Description',
+            '描述',
             style: TextStyle().copyWith(color: ColorfulApp.of(context).colors.bleak, fontSize: 12.0),
           ),
           const SizedBox(height: 12.0),
@@ -274,7 +276,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
               maxLines: null,
               inputAction: TextInputAction.newline,
               value: state.todo.description,
-              hint: 'Todo\'s description',
+              hint: '待办事项的描述',
               onChanged: (value) => _bloc.actions.add(UpdateField(key: FieldKey.description, value: value)),
             ),
           ),
@@ -297,7 +299,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Text(
-            'Tags',
+            '标签',
             style: TextStyle().copyWith(color: ColorfulApp.of(context).colors.bleak, fontSize: 12.0),
           ),
           const SizedBox(height: 4.0),
@@ -321,7 +323,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Text(
-            'Bullet points',
+            '要点',
             style: TextStyle().copyWith(color: ColorfulApp.of(context).colors.bleak, fontSize: 12.0),
           ),
           Padding(
@@ -347,7 +349,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            'Image:',
+            '图片:',
             style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
           ),
           const SizedBox(height: 12.0),
@@ -379,7 +381,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Text(
-              'Notification:',
+              '通知:',
               style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
             ),
             const SizedBox(height: 8.0),
@@ -414,7 +416,7 @@ class _TodoEditScreenState extends State<TodoEditScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Text(
-              'Due:',
+              '到期:',
               style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
             ),
             const SizedBox(height: 8.0),

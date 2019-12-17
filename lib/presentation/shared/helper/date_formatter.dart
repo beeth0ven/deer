@@ -4,28 +4,27 @@ class DateFormatter {
   DateFormatter._();
 
   static String formatFullWithTime(DateTime date) {
-    final formatter = DateFormat('H:mm - EEEE, dd.MM.y');
+    final formatter = DateFormat('H:mm - EEEE, dd.MM.y', 'zh_CN');
 
     return formatter.format(date);
   }
 
   static String safeFormatFullWithTime(DateTime date) {
     if (date == null) {
-      return 'Not assigned';
+      return '未分配';
     }
 
     return formatFullWithTime(date);
   }
 
   static String formatFull(DateTime date) {
-    final formatter = DateFormat('EEEE, dd.MM.y');
-
+    final formatter = DateFormat('EEEE, dd.MM.y', 'zh_CN');
     return formatter.format(date);
   }
 
   static String safeFormatFull(DateTime date) {
     if (date == null) {
-      return 'Not assigned';
+      return '未分配';
     }
 
     return formatFull(date);
@@ -41,44 +40,44 @@ class DateFormatter {
     final days = difference.inDays;
 
     if (days == 0) {
-      return 'Today';
+      return '今天';
     }
 
     if (difference.isNegative) {
       // past
       final daysAbs = days.abs();
       if (daysAbs == 1) {
-        return 'Yesterday';
+        return '昨天';
       }
 
       if (daysAbs < 7) {
-        return DateFormat("$daysAbs 'days ago'").format(date);
+        return DateFormat("$daysAbs '天前'").format(date);
       }
 
       if (daysAbs < 30) {
         final weeks = (daysAbs / 7).truncate();
-        return _pastPlural(text: 'week', value: weeks);
+        return _pastPlural(text: '周', value: weeks);
       }
 
       final months = (daysAbs / 30).truncate();
-      return _pastPlural(text: 'month', value: months);
+      return _pastPlural(text: '月', value: months);
     } else {
       // future
       if (days == 1) {
-        return 'Tomorrow';
+        return '明天';
       }
 
       if (days < 7) {
-        return DateFormat("In $days 'days'").format(date);
+        return DateFormat("$days '天后'").format(date);
       }
 
       if (days < 30) {
         final weeks = (days / 7).truncate();
-        return _futurePlural(text: 'week', value: weeks);
+        return _futurePlural(text: '周', value: weeks);
       }
 
       final months = (days / 30).truncate();
-      return _futurePlural(text: 'month', value: months);
+      return _futurePlural(text: '月', value: months);
     }
   }
 

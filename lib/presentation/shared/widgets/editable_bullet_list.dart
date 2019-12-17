@@ -92,7 +92,7 @@ class _EditableBulletListState extends State<EditableBulletList> {
           focusNode: bullet.item2,
           maxLines: null,
           inputAction: TextInputAction.next,
-          hint: 'Next bullet point',
+          hint: '新增要点',
           value: ' ${bullet.item1.text.trimLeft()}',
           checked: bullet.item1.checked,
           onChanged: (value) {

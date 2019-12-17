@@ -48,16 +48,16 @@ class _ArchiveListScreenState extends State<ArchiveListScreen> {
     showDialog(
       context: context,
       builder: (context) => RoundedAlertDialog(
-            title: 'Do you want to clear the Archive?',
+            title: '您要清除存档吗？',
             actions: <Widget>[
               FlatRoundButton(
-                  text: 'Yes',
+                  text: '是',
                   onTap: () {
                     Navigator.pop(context);
                     _clearArchive();
                   }),
               FlatRoundButton(
-                text: 'No',
+                text: '否',
                 onTap: () => Navigator.pop(context),
               ),
             ],
@@ -82,7 +82,7 @@ class _ArchiveListScreenState extends State<ArchiveListScreen> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: ColorfulApp.of(context).colors.bleak),
         centerTitle: true,
-        title: Text('Archive'),
+        title: Text('存档'),
       ),
       body: state.clearTask != Task.running() ? _buildBody(state) : Center(child: CircularProgressIndicator()),
     );
@@ -99,7 +99,7 @@ class _ArchiveListScreenState extends State<ArchiveListScreen> {
           children: <Widget>[
             Expanded(
               child: state.archivedTodos.length == 0
-                  ? buildCentralLabel(text: 'Archive is empty!', context: context)
+                  ? buildCentralLabel(text: '存档是空的！', context: context)
                   : ListView.builder(
                       itemCount: state.archivedTodos.length,
                       itemBuilder: (context, index) {
@@ -114,7 +114,7 @@ class _ArchiveListScreenState extends State<ArchiveListScreen> {
                     ),
             ),
             BottomButton(
-              text: 'Clear',
+              text: '清除',
               onPressed: _showConfirmationDialog,
             ),
           ],

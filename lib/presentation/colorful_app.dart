@@ -16,6 +16,25 @@ enum ColorfulTheme {
   golden,
 }
 
+String colorfulThemeText(ColorfulTheme theme) {
+  switch (theme) {
+    case ColorfulTheme.standard:
+      return "标准";
+    case ColorfulTheme.salmon:
+      return "三文鱼";
+    case ColorfulTheme.indigo:
+      return "靛青";
+    case ColorfulTheme.mint:
+      return "薄荷";
+    case ColorfulTheme.arcticBlue:
+      return "北极蓝";
+    case ColorfulTheme.golden:
+      return "金色";
+    default:
+      return "未知";
+  }
+}
+
 class ColorfulApp extends StatefulWidget {
   final AppBuilder builder;
 

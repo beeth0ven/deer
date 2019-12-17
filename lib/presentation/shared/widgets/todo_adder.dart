@@ -99,6 +99,7 @@ class _TodoAdderState extends State<TodoAdder> {
 
   void _setupNotification() async {
     final date = await showDatePicker(
+      // locale: const Locale('zh'),
       context: context,
       initialDate: _notificationDate ?? DateTime.now(),
       firstDate: DateTime(1970),
@@ -240,7 +241,7 @@ class _TodoAdderState extends State<TodoAdder> {
               style: TextStyle().copyWith(fontSize: 16.0, color: AppColors.black1),
               decoration: InputDecoration.collapsed(
                 border: UnderlineInputBorder(),
-                hintText: widget.showError ? 'Name can\'t be empty' : 'New Todo',
+                hintText: widget.showError ? '名称不能为空' : '新增待办事项',
                 hintStyle: TextStyle().copyWith(
                   color: widget.showError ? ColorfulApp.of(context).colors.dark : ColorfulApp.of(context).colors.medium,
                 ),
@@ -249,7 +250,7 @@ class _TodoAdderState extends State<TodoAdder> {
           ),
           const SizedBox(width: 16.0),
           RoundButton(
-            text: 'Add',
+            text: '新增',
             onPressed: () {
               widget.onAdd(_buildTodo());
               widget.todoNameController.clear();
@@ -293,7 +294,7 @@ class _TodoAdderState extends State<TodoAdder> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Text(
-              'Notification:',
+              '通知:',
               style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
             ),
             const SizedBox(height: 8.0),

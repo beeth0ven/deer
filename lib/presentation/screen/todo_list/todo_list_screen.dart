@@ -98,13 +98,13 @@ class _TodoListScreenState extends State<TodoListScreen> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: ColorfulApp.of(context).colors.dark),
-        title: Text('All Todos'),
+        title: Text('所有待办事项'),
         centerTitle: true,
         bottom: _buildFilter(state),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.done_all),
-            tooltip: 'Archive',
+            tooltip: '存档',
             onPressed: _showArchive,
           ),
         ],
@@ -115,7 +115,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
 
   Widget _buildFilter(TodoListState state) {
     final filters = presetTags.toList();
-    filters.insertAll(0, ['All', 'Favorite']);
+    filters.insertAll(0, ['所有', '收藏']);
 
     return PreferredSize(
       preferredSize: const Size.fromHeight(40.0),
@@ -127,7 +127,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Text('Filter by:'),
+              Text('筛选:'),
               const SizedBox(width: 8.0),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
@@ -162,7 +162,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
             child: state.todos.length == 0
                 ? Center(
                     child: SingleChildScrollView(
-                      child: buildCentralLabel(text: 'Todo list is empty!', context: context),
+                      child: buildCentralLabel(text: '存档是空的！', context: context),
                     ),
                   )
                 : ListView.builder(

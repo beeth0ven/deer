@@ -20,9 +20,9 @@ import 'home_actions.dart';
 import 'home_bloc.dart';
 
 const List<_MenuPage> _menuPages = [
-  _MenuPage(title: 'Calendar', description: 'Quickly preview and prepare your schedule', icon: Icons.event),
-  _MenuPage(title: 'All Todos', description: 'Display all active Todos', icon: Icons.list),
-  _MenuPage(title: 'Settings', description: 'Customize Deer to your liking', icon: Icons.settings),
+  _MenuPage(title: '日历', description: '快速预览并准备日程表', icon: Icons.event),
+  _MenuPage(title: '所有待办事项', description: '显示所有活动的待办事项', icon: Icons.list),
+  _MenuPage(title: '设置', description: '根据您的喜好自定义鹿', icon: Icons.settings),
 ];
 
 class HomeScreen extends StatefulWidget {
@@ -111,11 +111,11 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context) => RoundedAlertDialog(
             actions: <Widget>[
               FlatRoundButton(
-                text: 'Close',
+                text: '关闭',
                 onTap: () => Navigator.pop(context),
               ),
             ],
-            title: 'Select Color Theme',
+            title: '选择颜色主题',
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -127,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         splashColor: ColorfulApp.of(context).themeDataFromEnum(color).medium.withOpacity(0.4),
                         onTap: () => ColorfulApp.of(context).updateColorTheme(color),
                         child: _buildColorDialogTile(
-                          text: capitalize(enumToStringSingle(color)),
+                          text: colorfulThemeText(color),
                           mainColor: ColorfulApp.of(context).themeDataFromEnum(color).pale,
                           borderColor: ColorfulApp.of(context).themeDataFromEnum(color).bleak,
                         ),
@@ -143,17 +143,17 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       barrierDismissible: true,
       builder: (context) => RoundedAlertDialog(
-            title: 'Privacy Policy',
+            title: '隐私政策',
             content: SingleChildScrollView(
               child: Text(shortPrivacyPolicy, textAlign: TextAlign.center),
             ),
             actions: <Widget>[
               FlatRoundButton(
-                text: 'Read more',
+                text: '了解更多',
                 onTap: _showFullPrivacyPolicy,
               ),
               FlatRoundButton(
-                text: 'Close',
+                text: '关闭',
                 onTap: () => Navigator.pop(context),
               ),
             ],
@@ -195,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Expanded(child: const SizedBox()),
         _buildDescription(),
         Expanded(flex: 3, child: const SizedBox()),
-        _buildFooter(),
+        // _buildFooter(),
       ],
     );
   }

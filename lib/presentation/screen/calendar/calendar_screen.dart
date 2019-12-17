@@ -114,16 +114,16 @@ class _CalendarScreenState extends State<CalendarScreen> {
     showDialog(
       context: context,
       builder: (context) => RoundedAlertDialog(
-        title: 'Do you want to clear the Archive?',
+        title: '您要清除存档吗？',
         actions: <Widget>[
           FlatRoundButton(
-              text: 'Yes',
+              text: '是',
               onTap: () {
                 Navigator.pop(context);
                 _bloc.actions.add(ClearDailyArchive());
               }),
           FlatRoundButton(
-            text: 'No',
+            text: '否',
             onTap: () => Navigator.pop(context),
           ),
         ],
@@ -147,7 +147,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: ColorfulApp.of(context).colors.dark),
-        title: Text('Calendar View'),
+        title: Text('日历'),
         centerTitle: true,
       ),
       body: SafeArea(top: true, bottom: true, child: _buildBody(state)),
@@ -184,6 +184,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   Widget _buildCalendar(CalendarState state) {
     return TableCalendar(
+      locale: 'zh_CN',
       calendarController: _calendarController,
       onDaySelected: _onDaySelected,
       onHeaderTapped: _onCalendarHeaderTapped,
@@ -242,7 +243,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   child: Text(
-                    '${state.archiveVisible ? 'Active' : 'Archive'}',
+                    '${state.archiveVisible ? '激活' : '存档'}',
                     style: TextStyle().copyWith(fontSize: 13.0),
                   ),
                 ),
@@ -278,13 +279,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
     if (state.archiveVisible) {
       children.add(
         Expanded(
-          child: state.archivedTodos.length == 0 ? _buildPlaceholder('Archive is empty!') : _buildArchivedList(state),
+          child: state.archivedTodos.length == 0 ? _buildPlaceholder('存档是空的！') : _buildArchivedList(state),
         ),
       );
     } else {
       children.add(
         Expanded(
-          child: state.activeTodos.length == 0 ? _buildPlaceholder('Todo list is empty!') : _buildActiveList(state),
+          child: state.activeTodos.length == 0 ? _buildPlaceholder('待办事项是空的！') : _buildActiveList(state),
         ),
       );
     }
@@ -307,7 +308,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget _buildBottom(CalendarState state) {
     if (state.archiveVisible) {
       return BottomButton(
-        text: 'Clear',
+        text: '清除',
         onPressed: _showConfirmationDialog,
       );
     } else {

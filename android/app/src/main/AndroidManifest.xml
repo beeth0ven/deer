@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.wozappz.deer">
+    package="com.picroup.deer.android">
 
     <!-- The INTERNET permission is required for development. Specifically,
          flutter needs it to communicate with the running application
@@ -16,7 +16,7 @@
     
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Deer"
+        android:label="鹿-待办事项"
         android:icon="@mipmap/deer_launcher"
         android:roundIcon="@mipmap/deer_launcher_round">
         <activity

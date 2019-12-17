@@ -3,6 +3,7 @@ import 'package:deer/presentation/colorful_app.dart';
 import 'package:deer/presentation/screen/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 Dependencies _sharedDependencies;
 Dependencies get dependencies => _sharedDependencies;
@@ -20,7 +21,7 @@ class App extends StatelessWidget {
     _notificationManager = notificationManager;
   }
 
-  final String _title = 'Deer';
+  final String _title = '鹿';
 
   // This widget is the root of your application.
   @override

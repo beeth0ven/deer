@@ -106,7 +106,7 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: ColorfulApp.of(context).colors.bleak),
         centerTitle: true,
-        title: Text('Todo\'s details'),
+        title: Text('待办事项的详情'),
       ),
       body: _buildBody(state),
     );
@@ -192,7 +192,7 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Text(
-            'Description:',
+            '描述:',
             style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
           ),
           const SizedBox(height: 8.0),
@@ -216,7 +216,7 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Text(
-            'Tags',
+            '标签',
             style: TextStyle().copyWith(color: ColorfulApp.of(context).colors.bleak, fontSize: 12.0),
           ),
           const SizedBox(height: 4.0),
@@ -240,7 +240,7 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Text(
-            'Bullet points:',
+            '要点:',
             style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
           ),
           const SizedBox(height: 8.0),
@@ -259,7 +259,7 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            'Image:',
+            '图片:',
             style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
           ),
           const SizedBox(height: 12.0),
@@ -282,7 +282,7 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Text(
-            'Notification:',
+            '通知:',
             style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
           ),
           const SizedBox(height: 8.0),
@@ -310,7 +310,7 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
   Widget _buildDate(TodoDetailState state) {
     final children = [
       Text(
-        'Added:',
+        '创建时间:',
         style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
       ),
       const SizedBox(height: 8.0),
@@ -332,7 +332,7 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
       ),
       const SizedBox(height: 24.0),
       Text(
-        'Due:',
+        '到期:',
         style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
       ),
       const SizedBox(height: 8.0),
@@ -358,7 +358,7 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
       children.addAll([
         const SizedBox(height: 24.0),
         Text(
-          'Finished on:',
+          '完成:',
           style: TextStyle().copyWith(fontSize: 12.0, color: ColorfulApp.of(context).colors.bleak),
         ),
         const SizedBox(height: 8.0),
@@ -395,7 +395,7 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
         const SizedBox(height: 24.0),
         Center(
           child: Text(
-            'Edit this Todo to add more sections',
+            '编辑此待办事项以添加更多部分',
             style: TextStyle().copyWith(
               color: ColorfulApp.of(context).colors.bleak,
               fontSize: 14.0,
@@ -411,14 +411,14 @@ class _TodoDetailScreenState extends State<TodoDetailScreen> {
   Widget _buildBottomBox(TodoDetailState state) {
     if (widget.editable) {
       return BottomButton(
-        text: 'Edit',
+        text: '编辑',
         onPressed: () => _edit(state.todo),
       );
     } else {
       return BottomButtonRow(
         buttonsData: [
-          Tuple2('Restore', () => _restore(state.todo)),
-          Tuple2('Delete', () => _delete(state.todo)),
+          Tuple2('恢复', () => _restore(state.todo)),
+          Tuple2('删除', () => _delete(state.todo)),
         ],
       );
     }
